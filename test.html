@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function Car(make, model, level, color, warranty) {
+		this.make = make;
+		this.model = model;
+		this.level = level;
+		this.color = color;
+		this.warranty = warranty;
+	}
+
+	Car.prototype.getInfo = function() {
+		return this.make + ',' + this.model + ',' + this.level + ','
+				+ this.color + ',' + this.warranty;
+	};
+
+	var aCar = new Car('Acura', 'TL', 'Sport', 'blue', 5);
+	//alert(aCar.getInfo());  //displays Acura, TL, Sport, blue, 5
+
+	Car.prototype.accelerate = function() {
+		return 'How fast?';
+	};
+	//document.write(aCar.accelerate()); //displays "How fast?"
+
+	/* test = {
+		  init : function(){
+			  alert("init");
+		  }
+	}; */
+	function test() {}
+
+	test.prototype = {
+		init : function() {
+			alert("init");
+		},
+		getInfo : function() {
+			alert("getInfo");
+		},
+		aaaa : "A"
+	};
+test.extend({
+		
+		alert : function(){
+			alert("A");
+		}
+	});
+	
+	var aTest = new test();
+
+	
+	
+	var index = 0;
+	var module = (function(index){
+		var A = 0;
+		var B = 0;
+		index = index + 1;
+		return{
+			init : function(){
+				alert("init");
+			},
+			A : function(){
+				alert(A);
+			}
+		};
+	})(index);
+	
+	window.jQuery = window.$$ = aTest;	
+	
+	
+	$$.init();
+</script>
+</head>
+<body>
+</body>
+</html>
